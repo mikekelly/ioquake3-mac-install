@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# 	ioquake3 mac install
+# 	quake3e mac install
 # 	author: Diego Ulloa
 # 	website: https://diegoulloa.dev/
 
@@ -10,7 +10,7 @@ set -e # exit on error
 declare -r BRANCH="master"
 
 # Local Dependencies
-declare -r ioquake3="https://github.com/diegoulloao/ioquake3-mac-install/raw/$BRANCH/dependencies/ioquake3.zip"
+declare -r quake3e="https://github.com/mikekelly/quake3e-mac-install/raw/$BRANCH/dependencies/quake3e.zip"
 declare -r pak="https://github.com/diegoulloao/ioquake3-mac-install/raw/$BRANCH/dependencies/baseq3/pak@.pk3"
 declare -r cd_key="https://github.com/diegoulloao/ioquake3-mac-install/raw/$BRANCH/dependencies/baseq3/q3key"
 declare -r version="https://github.com/diegoulloao/ioquake3-mac-install/raw/$BRANCH/version"
@@ -19,6 +19,7 @@ declare -r xpr="https://github.com/diegoulloao/ioquake3-mac-install/raw/$BRANCH/
 declare -r q3_ls="https://github.com/diegoulloao/ioquake3-mac-install/raw/$BRANCH/extras/quake3-live-sounds.pk3"
 declare -r hd_weapons="https://github.com/diegoulloao/ioquake3-mac-install/raw/$BRANCH/extras/hd-weapons.pk3"
 declare -r zpack_weapons="https://github.com/diegoulloao/ioquake3-mac-install/raw/$BRANCH/extras/zpack-weapons.pk3"
+declare -r beta6="https://github.com/mikekelly/quake3e-mac-install/raw/$BRANCH/extras/cos1_beta7b.pk3"
 
 # External dependencies
 declare -r pak0="https://github.com/nrempel/q3-server/raw/master/baseq3/pak0.pk3"
@@ -29,30 +30,30 @@ declare -r cpma="https://cdn.playmorepromode.com/files/cpma/cpma-1.53-nomaps.zip
 # Start installation
 cd /Applications
 
-# Download ioquake3
+# Download quake3e
 echo "\n
 **************************************************
-  Downloading ioquake3 ...
+  Downloading quake3e ...
 **************************************************
 \n"
 
-curl -L $ioquake3 > ioquake3.zip
+curl -L $quake3e > quake3e.zip
 
 echo "\n
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-  Installing ioquake3 ...
+  Installing quake3e ...
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 \n"
 
-unzip -a -o ioquake3.zip
-rm -f ioquake3.zip
+unzip -a -o quake3e.zip
+rm -f quake3e.zip
 
 if [ -d __MACOSX  ]; then
   cd __MACOSX
 
-  if [ -d ioquake3 ]; then
-    rm -rf ioquake3
-    rm -rf ._ioquake3
+  if [ -d quake3e ]; then
+    rm -rf quake3e
+    rm -rf ._quake3e
   fi
 
   cd ..
@@ -62,7 +63,7 @@ if [ -d __MACOSX  ]; then
   fi
 fi
 
-echo "\n\n-> ioquake3 installed. 	(1 of 10)"
+echo "\n\n-> quake3e installed. 	(1 of 11)"
 
 # Create Quake3 and baseq3 directories
 cd "$HOME/Library/Application Support/"
@@ -104,7 +105,7 @@ while [ $COUNT -lt 9 ] ; do
 	let COUNT+=1
 done
 
-echo "\n\n-> pak files installed. 	(2 of 10)"
+echo "\n\n-> pak files installed. 	(2 of 11)"
 
 # High Resolution Pack
 echo "\n
@@ -124,7 +125,7 @@ echo "\n
 unzip -a -o xcsv_hires.zip
 rm -f xcsv_hires.zip
 
-echo "\n\n-> high resolution pack installed. 	(3 of 10)"
+echo "\n\n-> high resolution pack installed. 	(3 of 11)"
 
 # Extra pack resolution
 echo "\n
@@ -135,7 +136,7 @@ echo "\n
 
 curl -L $xpr > pak9hqq37test20181106.pk3
 
-echo "\n\n-> extra pack resolutions installed. 	(4 of 10)"
+echo "\n\n-> extra pack resolutions installed. 	(4 of 11)"
 
 # CPMA map pack
 echo "\n
@@ -155,7 +156,7 @@ echo "\n
 unzip -a -o -d . cpma-mappack-full.zip
 rm -f cpma-mappack-full.zip
 
-echo "\n\n-> cpma map-pack installed. 	(5 of 10)"
+echo "\n\n-> cpma map-pack installed. 	(5 of 11)"
 
 # Q3 live sounds pack
 echo "\n
@@ -166,7 +167,7 @@ echo "\n
 
 curl -L $q3_ls > quake3-live-soundpack.pk3
 
-echo "\n\n-> quake3 live soundpack installed. 	(6 of 10)"
+echo "\n\n-> quake3 live soundpack installed. 	(6 of 11)"
 
 # CPMA MOD
 echo "\n
@@ -187,7 +188,7 @@ echo "\n
 unzip -a -o cpma.zip
 rm -f cpma.zip
 
-echo "\n\n-> cpma mod 1.52 installed. 	(7 of 10)"
+echo "\n\n-> cpma mod 1.52 installed. 	(7 of 11)"
 
 # cd-key
 echo "\n
@@ -200,7 +201,7 @@ cd baseq3
 
 curl -L $cd_key > q3key
 
-echo "\n\n-> cd-key installed. 	(8 of 10)"
+echo "\n\n-> cd-key installed. 	(8 of 11)"
 
 # hd-weapons
 echo "\n
@@ -211,7 +212,7 @@ echo "\n
 
 curl -L $hd_weapons > pakxy01Tv5.pk3
 
-echo "\n\n-> hd-weapons installed. 	(9 of 10)"
+echo "\n\n-> hd-weapons installed. 	(9 of 11)"
 
 # zpack-weapons replacement
 echo "\n
@@ -222,7 +223,17 @@ echo "\n
 
 curl -L $zpack_weapons > zpack-weapons.pk3
 
-echo "\n\n-> zpack-weapons installed. 	(10 of 10)"
+echo "\n\n-> zpack-weapons installed. 	(10 of 11)"
+
+echo "\n
+**************************************************
+	Downloading and installing beta7b ...
+**************************************************
+\n"
+
+curl -L $beta7b > cos1_beta7b.pk3
+
+echo "\n\n-> beta7b installed. 	(10 of 11)"
 
 cd ..
 
